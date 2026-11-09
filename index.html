@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple weather app">
+    <meta name="theme-color" content="blue">
+    <title>SkyCast</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="container">
+        <header class="head">
+            <a href="#" class="logo"><span>SkyCast</span></a>
+            <span class="headlabel">Explore the weather near you.</span>
+        </header>
+
+        <section class="hello">
+            <p class="tagline">What's the weather today?</p>
+            <h1>Is it going to rain today?</h1>
+            <p class="subtitle">Find out the weather whereever you are with SkyCast.</p>
+        </section>
+
+        <section class="search">
+            <form id="sform">
+                <div class="searchbox">
+                    <span class="searchicon"><img src="images/search.svg" alt="search icon"></span>
+                    <input type="text" id="cityinput" placeholder="enter a city name:" autocomplete="off" required>
+                    <button type="submit" id="searchbtn">Search</button>
+                </div>
+            </form>
+        </section>
+
+        <div id="status" class="status hidden" role="status" aria-live="polite"></div>
+
+        <section id="weather" class="weather hidden">
+            <div class="wcard">
+                <div class="wtop">
+                    <div>
+                        <p class="title">Current weather:</p>
+                        <h2 id="cityname">London</h2>
+                        <p id="date" class="date">9/11/2026</p>
+                    </div>
+                </div>
+
+                <div class="temp">
+                    <span id="temp">67</span>
+                    <span class="unit">C</span>
+                </div>
+
+                <p id="weather-desc" class="weatherdesc">
+                    Loading...
+                </p>
+
+                <div class="divider"></div>
+
+                <div class="wdetails">
+                    <div class="detail">
+                        <div><p>Feels like</p><strong id="feelslike">idk</strong></div>
+                    </div>
+
+                    <div class="detail">
+                        <div><p>Humidity</p><strong id="humidity">idk</strong></div>
+                    </div>
+
+                    <div class="detail">
+                        <div><p>Wind speed</p><strong id="windspeed">tornado</strong></div>
+                    </div>
+
+                    <div class="detail">
+                        <div><p>Precipitation</p><strong id="precipitation">rain</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="stinky-feet">
+            <p>do you want to smell my feet? it's a footer -> foot -> feet.</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
