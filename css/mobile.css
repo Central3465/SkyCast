@@ -1,0 +1,38 @@
+@media (max-width: 550px) {
+    .container {
+        padding: 35px 15px;
+    }
+
+    .head {
+        margin-bottom: 65px;
+    }
+
+    .headlabel {
+        font-size: 9px;
+    }
+
+    .searchbox {
+        gap: 8px;
+        padding-left: 12px;
+    }
+
+    .searchbox button {
+        padding: 12px 13px;
+    }
+
+    .wcard {
+        padding: 23px 19px;
+    }
+
+    .temp span {
+        font-size: 67px;
+    }
+
+    .wdetails {
+        gap: 22px 12px
+    }
+
+    .stinky-feet {
+        margin-top: 45px;
+    }
+}
