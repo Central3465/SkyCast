@@ -73,3 +73,22 @@ async function searchcity(city) {
         searchbtn.textContent = "Search";
     }
 }
+
+function displayweather(location, weatherdata) {
+    const current = weatherdata.current_weather;
+    const weather = weathercodes[current.weathercode];
+    document.getElementById("cityname").textContent = `${location.name}, ${location.country}`;
+    document.getElementById("currentdate").textContent = new Intl.DateTimeFormat("en-GB", {
+        dateStyle: "full",
+        timeZone: weatherdata.timezone
+    }).format(new Date());
+    document.getElementById("temperature").textContent = Math.round(current.temperature_2m);
+    document.getElementById("weather-desc").textContent = weather[0];
+    document.getElementById("feelslike").textContent = Math.round(current.apparent_temperature);
+    document.getElementById("humidity").textContent = `${current.relative_humidity_2m}%`;
+    document.getElementById("precipitation").textContent = `${current.precipitation}mm`;
+    document.getElementById("windspeed").textContent = `${current.wind_speed_10m}km/hour`;
+    hidestatus();
+    weathersection.classList.remove("hidden");
+}
+
