@@ -92,3 +92,12 @@ function displayweather(location, weatherdata) {
     weathersection.classList.remove("hidden");
 }
 
+seform.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const city = cityinput.value.trim();
+    if (!city) {
+        showstatus("Please enter a city name", true);
+        return;
+    }
+    searchcity(city);
+})
