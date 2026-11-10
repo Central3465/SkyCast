@@ -217,3 +217,25 @@ body {
     color: white;
     text-decoration: none;
 }
+
+#refreshbtn {
+    background: blue;
+    border: 1px solid white;
+    color: white;
+    border-radius: 10px;
+    width: 38px;
+    height: 38px;
+    font-size: 23px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+#refreshbtn:hover {
+    background: darkblue;
+    transform: rotate(45deg);
+}
+
+#refreshbtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

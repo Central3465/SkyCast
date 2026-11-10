@@ -4,6 +4,10 @@ const searchbtn = document.getElementById("searchbtn");
 const weathersection = document.getElementById("weather");
 const statusbox = document.getElementById("status");
 
+let currentloc = null;
+const refreshbtn = document.getElementById("refreshbtn");
+const lastupdated = document.getElementById("lastupdated");
+
 const weathercodes = {
     0: ["Clear sky", "☀️"],
     1: ["I'll do it later", "😫"]
@@ -43,6 +47,7 @@ async function searchcity(city) {
             throw new Error("city not found");
         }
         const location = geodata.results[0];
+        currentloc = location;
         showstatus("getting the latest weather...");
         const weatherurl = new URL(`https://api.open-meteo.com/v1/forecast`);
         weatherurl.search = new URLSearchParams({
@@ -77,7 +82,12 @@ async function searchcity(city) {
 function displayweather(location, weatherdata) {
     const current = weatherdata.current_weather;
     const weather = weathercodes[current.weathercode];
-    document.getElementById("cityname").textContent = `${location.name}, ${location.country}`;
+    const locationparts = [
+        location.name,
+        location.admin1,
+        location.country
+    ].filter(Boolean);
+    document.getElementById("cityname").textContent = [...new Set(locationparts)].join(",");
     document.getElementById("currentdate").textContent = new Intl.DateTimeFormat("en-GB", {
         dateStyle: "full",
         timeZone: weatherdata.timezone
@@ -88,6 +98,7 @@ function displayweather(location, weatherdata) {
     document.getElementById("humidity").textContent = `${current.relative_humidity_2m}%`;
     document.getElementById("precipitation").textContent = `${current.precipitation}mm`;
     document.getElementById("windspeed").textContent = `${current.wind_speed_10m}km/hour`;
+    lastupdated.textContent = `Last updated at ${new Date().toLocaleDateString("en-GB")}`
     hidestatus();
     weathersection.classList.remove("hidden");
 }
@@ -101,3 +112,15 @@ seform.addEventListener("submit", (e) => {
     }
     searchcity(city);
 })
+
+refreshbtn.addEventListener("click", async () => {
+    if (!currentloc) return;
+    refreshbtn.disabled = true;
+    refreshbtn.textContent = "Refreshing...";
+    try {
+        await searchcity(currentloc.name);
+    } finally {
+        refreshbtn.disabled = false;
+        refreshbtn.textContent = "Refresh";
+    }
+});
