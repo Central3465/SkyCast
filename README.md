@@ -13,6 +13,10 @@
 - Responsive layout for desktop and mobile, sure.
 - Loading (an animated loading state instead of the generic message 🤯) and error messages.
 
+## How do I access it?
+
+There will be a Github Pages link here and on the repo once I have set it up.
+
 ## Running locally
 
 There is no build step, package installation or backend 🥳.
