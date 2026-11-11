@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Check current weather conditions for cities around the world with SkyCast.">
     <meta name="theme-color" content="#101827">
-    <title>SkyCast — Weather Explorer</title>
+    <title>SkyCast</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/mobile.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,10 @@
             </form>
         </section>
 
-        <div id="status" class="status hidden" role="status" aria-live="polite"></div>
+        <div id="status" class="status hidden" role="status" aria-live="polite">
+            <div class="loadingwheel"></div>
+            <span id="statusmsg">Loading...</span>
+        </div>
 
         <section id="weather" class="weather hidden" aria-live="polite">
             <div class="wcard">
@@ -77,10 +80,11 @@
                 </div>
             </div>
         </section>
-
+        <!-- do we really need a footer? less clutter for mobile devices
         <footer class="stinky-feet">
             <p>Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>.</p>
         </footer>
+        -->
     </main>
 
     <script src="js/app.js"></script>

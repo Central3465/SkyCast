@@ -124,13 +124,53 @@ body {
 }
 
 .status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     background: blueviolet;
     border: 1px solid white;
     color: white;
-    padding: 15px;
+    padding: 18px;
     border-radius: 12px;
     margin-bottom: 20px;
-    font-size:13px;
+    font-size: 13px;
+}
+
+.status.error {
+    background: red;
+    color: white;
+}
+
+.loadingwheel {
+    width: 19px;
+    height: 19px;
+    border: 3px solid white;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#searchbtn:disabled,
+#refreshbtn:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+
+.status.error .loadingwheel {
+    display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loadingwheel {
+        animation: none;
+    }
 }
 
 .hidden {
