@@ -62,6 +62,11 @@ async function getweather(location) {
         latitude: location.latitude,
         longitude: location.longitude,
         timezone: "auto",
+        daily: [
+            "precipitation_probability_max",
+            "precipitation_sum",
+        ].join(","),
+        forecast_days: 1,
         current: [
             "temperature_2m",
             "relative_humidity_2m",
@@ -123,6 +128,25 @@ async function searchcity(city) {
 
 function displayweather(location, weatherdata) {
     const current = weatherdata.current;
+    const prob = weatherdata.daily.precipitation_probability_max[0];
+    const fallrain = weatherdata.daily.precipitation_sum[0];
+    const raimmsg = document.getElementById("rainmsg");
+    const rainicon = document.getElementById("rainicon");
+
+    if (prob === null || prob === undefined) {
+        raimmsg.textContent = "No data.";
+        rainicon.textContent = "💀";
+    } else if (prob >= 50) {
+        raimmsg.textContent = `${prob}% chance of rain. Expect ${fallrain} mm.`;
+        rainicon.textContent = "🌧️";
+    } else if (prob <= 5) {
+        raimmsg.textContent = `${prob}% chance of rain. ${fallrain} mm so an umbrella is probably not needed.`;
+        rainicon.textContent = "🌤️";
+    } else {
+        raimmsg.textContent = `${prob}% chance of rain. Expect ${fallrain} mm.`;
+        rainicon.textContent = "🌦️";
+    }
+
     const weather = weathercodes[current.weather_code] || ["Unknown conditions", "🌍"];
 
     const locationparts = [

@@ -279,3 +279,28 @@ body {
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+.predrain {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: blueviolet;
+    border: 1px solid white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 22px;
+}
+
+.predrain > span {
+    font-size: 28px;
+}
+
+.predrain p {
+    color: white;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.predrain strong {
+    font-size: 14px;
+}
