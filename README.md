@@ -42,6 +42,10 @@ SkyCast/
 
 Open-Meteo - https://open-meteo.com/
 
+# Contributing
+
+Sure, go ahead. Please, nothing too drastic without discussing with me first. Small bug fixes or UI changes are acceptable. 
+
 ## License
 
 MIT
