@@ -65,17 +65,17 @@ async function getweather(location) {
         timezone: "auto",
         daily: [
             "precipitation_probability_max",
+            "precipitation_sum",
             "weather_code",
             "temperature_2m_max",
             "temperature_2m_min"
         ].join(","),
-        forecast_days: 6,
         hourly: [
             "temperature_2m",
             "weather_code",
             "precipitation_probability",
         ].join(","),
-        forecast_days: 2,
+        forecast_days: 5,
         current: [
             "temperature_2m",
             "relative_humidity_2m",
@@ -284,7 +284,7 @@ function displaydaily(weatherdata) {
         card.className = "daily-card";
         const day = document.createElement("div");
         day.className = "daily-day";
-        day.textContent = index === 0 ? "Today" : new Intl.DateTimeFormat("en-GB", { weekday: "short", timeZone: weatherdata.timezone }).format(new Date(`${date}T12:00:00`));
+        day.textContent = index === 0 ? "Today" : new Intl.DateTimeFormat("en-GB", { weekday: "short", timeZone: "UTC" }).format(new Date(`${date}T12:00:00Z`));
         const weatherinfo = document.createElement("div");
         weatherinfo.className = "daily-weather";
         const icon = document.createElement("span");
