@@ -7,7 +7,8 @@ const refreshbtn = document.getElementById("refreshbtn");
 const lastupdated = document.getElementById("lastupdated");
 
 let currentloc = null;
-let lastWeatherRequest = null;
+let requestid = 0; // guards against stale responses overwriting newer ones
+const HOURS_SHOWN = 8;
 
 // WMO weather interpretation codes.
 const weathercodes = {
@@ -71,8 +72,7 @@ async function getweather(location) {
             "weather_code",
             "precipitation_probability",
         ].join(","),
-        forecast_hours: 24,
-        forecast_days: 1,
+        forecast_days: 2,
         current: [
             "temperature_2m",
             "relative_humidity_2m",
@@ -120,6 +120,7 @@ async function searchcity(city) {
         }
 
         currentloc = geodata.results[0];
+        weathersection.classList.add("hidden");
         await refreshweather();
 
     } catch (error) {
@@ -135,21 +136,21 @@ async function searchcity(city) {
 function displayweather(location, weatherdata) {
     const current = weatherdata.current;
     const prob = weatherdata.daily.precipitation_probability_max[0];
-    const fallrain = weatherdata.daily.precipitation_sum[0];
-    const raimmsg = document.getElementById("rainmsg");
+    const fallrain = weatherdata.daily.precipitation_sum[0] ?? 0;
+    const rainmsg = document.getElementById("rainmsg");
     const rainicon = document.getElementById("rainicon");
 
     if (prob === null || prob === undefined) {
-        raimmsg.textContent = "No data.";
-        rainicon.textContent = "💀";
+        rainmsg.textContent = "No rain data available.";
+        rainicon.textContent = "🌍";
     } else if (prob >= 50) {
-        raimmsg.textContent = `${prob}% chance of rain. Expect ${fallrain} mm.`;
+        rainmsg.textContent = `${prob}% chance of rain. Expect ${fallrain} mm.`;
         rainicon.textContent = "🌧️";
     } else if (prob <= 5) {
-        raimmsg.textContent = `${prob}% chance of rain. ${fallrain} mm so an umbrella is probably not needed.`;
+        rainmsg.textContent = `${prob}% chance of rain. ${fallrain} mm expected, so an umbrella is probably not needed.`;
         rainicon.textContent = "🌤️";
     } else {
-        raimmsg.textContent = `${prob}% chance of rain. Expect ${fallrain} mm.`;
+        rainmsg.textContent = `${prob}% chance of rain. Expect ${fallrain} mm.`;
         rainicon.textContent = "🌦️";
     }
 
@@ -195,18 +196,20 @@ async function refreshweather() {
 
     refreshbtn.disabled = true;
     refreshbtn.textContent = "…";
+    const thisrequest = ++requestid;
     showstatus("Getting the latest weather...");
 
     try {
         const weatherdata = await getweather(currentloc);
-        lastWeatherRequest = weatherdata;
+        if (thisrequest !== requestid) return;
         displayweather(currentloc, weatherdata);
     } catch (error) {
         console.error(error);
+        if (thisrequest !== requestid) return;
         showstatus(error.message || "Unable to refresh weather. Please try again.", true);
     } finally {
         refreshbtn.disabled = false;
-        refreshbtn.textContent = "Refresh";
+        refreshbtn.textContent = "↻";
     }
 }
 
@@ -230,13 +233,14 @@ function displayhourly(weatherdata) {
     const hourly = weatherdata.hourly;
     container.replaceChildren();
     if (!hourly || !hourly.time || hourly.time.length === 0) {
-        container.textContent = "Data unvailable.";
+        container.textContent = "Hourly data unavailable.";
         return;
     }
-    const currenttime = weatherdata.current.time;
-    let startIndex = hourly.time.findIndex(time => time >= currenttime);
+    // current.time is 15-minute aligned; compare against the start of the current hour
+    const currenthour = `${weatherdata.current.time.slice(0, 13)}:00`;
+    let startIndex = hourly.time.findIndex(time => time >= currenthour);
     if (startIndex === -1) startIndex = 0;
-    const nexthours = hourly.time.slice(startIndex, startIndex + 12);
+    const nexthours = hourly.time.slice(startIndex, startIndex + HOURS_SHOWN);
     nexthours.forEach((time, index) => {
         const dataIndex = startIndex + index;
         const code = hourly.weather_code[dataIndex];
@@ -252,7 +256,7 @@ function displayhourly(weatherdata) {
         icon.textContent = weather[1];
         const temperature = document.createElement("div");
         temperature.className = "hourly-temp";
-        temperature.textContent = `${Math.round(hourly.temperature_2m[dataIndex])}ºC`;
+        temperature.textContent = `${Math.round(hourly.temperature_2m[dataIndex])}°C`;
         const rain = document.createElement("div");
         rain.className = "hourly-rain";
         rain.textContent = probability == null ? "No data" : `${probability}%`;
