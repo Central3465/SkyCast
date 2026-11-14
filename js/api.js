@@ -1,7 +1,7 @@
 async function getweather(location) {
     const cacheid = `${location.latitude},${location.longitude}`;
     try {
-        const cache = JSON.parse(localStorage.getItem(CACHE_KEY) || {});
+        const cache = JSON.parse(localStorage.getItem(CACHE_KEY) || "{}");
         const cached = cache[cacheid];
         if (cached && Date.now() - cached.timestamp < CACHE_DUE) {
             return cached.data;
@@ -42,7 +42,7 @@ async function getweather(location) {
     }
     const data = await response.json();
     try {
-        const cache = JSON.parse(localStorage.getItem(CACHE_KEY) || {});
+        const cache = JSON.parse(localStorage.getItem(CACHE_KEY) || "{}");
         cache[cacheid] = { timestamp: Date.now(), data };
         const entries = Object.entries(cache).sort((a,b) => b[1].timestamp - a[1].timestamp).slice(0, 10);
         localStorage.setItem(CACHE_KEY, JSON.stringify(Object.fromEntries(entries)))

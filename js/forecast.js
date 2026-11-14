@@ -44,7 +44,7 @@ function displaydaily(weatherdata) {
         return;
     }
     daily.time.slice(0, 5).forEach((date, index) => {
-        const code = daily.weather_code[index];
+        const code = daily.weathercode[index];
         const weather = weathercodes[code] || ["Unknown", "🌍"];
         const card = document.createElement("div");
         card.className = "daily-card";
