@@ -304,3 +304,62 @@ body {
 .predrain strong {
     font-size: 14px;
 }
+
+.hourly-section {
+    margin-top: 30px;
+}
+
+.forecasthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.forecasthead h3 {
+    font-size: 17px;
+}
+
+.forecasthead span {
+    font-size: 10px;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+.hourlyforecast {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+}
+
+.hourly-card {
+    flex: 0 0 88px;
+    text-align: center;
+    background: blueviolet;
+    border: 1px solid white;
+    border-radius: 12px;
+    padding: 14px 8px;
+}
+
+.hourly-time {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.hourly-icon {
+    display: block;
+    font-size: 25px;
+    margin: 12px 0;
+}
+
+.hourly-temp {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.hourly-rain {
+    font-size: 11px;
+    margin-top: 9px;
+    opacity: 0.75;
+}

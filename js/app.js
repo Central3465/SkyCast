@@ -66,6 +66,12 @@ async function getweather(location) {
             "precipitation_probability_max",
             "precipitation_sum",
         ].join(","),
+        hourly: [
+            "temperature_2m",
+            "weather_code",
+            "precipitation_probability",
+        ].join(","),
+        forecast_hours: 24,
         forecast_days: 1,
         current: [
             "temperature_2m",
@@ -180,6 +186,7 @@ function displayweather(location, weatherdata) {
     }).format(updatedAt)}`;
 
     hidestatus();
+    displayhourly(weatherdata);
     weathersection.classList.remove("hidden");
 }
 
@@ -217,3 +224,39 @@ seform.addEventListener("submit", (e) => {
 });
 
 refreshbtn.addEventListener("click", refreshweather);
+
+function displayhourly(weatherdata) {
+    const container = document.getElementById("hourlyforecast");
+    const hourly = weatherdata.hourly;
+    container.replaceChildren();
+    if (!hourly || !hourly.time || hourly.time.length === 0) {
+        container.textContent = "Data unvailable.";
+        return;
+    }
+    const currenttime = weatherdata.current.time;
+    let startIndex = hourly.time.findIndex(time => time >= currenttime);
+    if (startIndex === -1) startIndex = 0;
+    const nexthours = hourly.time.slice(startIndex, startIndex + 12);
+    nexthours.forEach((time, index) => {
+        const dataIndex = startIndex + index;
+        const code = hourly.weather_code[dataIndex];
+        const weather = weathercodes[code] || ["Unknown", "🌍"]; // fyi emoji was suggested by github copilot inline suggestions
+        const probability = hourly.precipitation_probability[dataIndex];
+        const card = document.createElement("div");
+        card.className = "hourly-card";
+        const timeElement = document.createElement("div");
+        timeElement.className = "hourly-time";
+        timeElement.textContent = time.split("T")[1].slice(0, 5);
+        const icon = document.createElement("span");
+        icon.className = "hourly-icon";
+        icon.textContent = weather[1];
+        const temperature = document.createElement("div");
+        temperature.className = "hourly-temp";
+        temperature.textContent = `${Math.round(hourly.temperature_2m[dataIndex])}ºC`;
+        const rain = document.createElement("div");
+        rain.className = "hourly-rain";
+        rain.textContent = probability == null ? "No data" : `${probability}%`;
+        card.append(timeElement, icon, temperature, rain);
+        container.appendChild(card);
+    });
+}
