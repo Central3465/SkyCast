@@ -54,7 +54,7 @@ SkyCast/
 
 ## Privacy
 
-I respect your privacy. Although there is no need for a dedicated privacy policy page as this is just a small side project, this website only collects your location with your permission, e.g: you must approve the location request. This website does not store your precise coordinates, it only sends your location to Open-Meteo, with the exception of storing your location in local storage for quicker access which is not read by me or any other person. If you have any queries or complaints (which I'm quite confused as to why), please consult with ChatGPT.
+I respect your privacy. Although there is no need for a dedicated privacy policy page as this is just a small side project, this website does not require an account or collect your PII (Personally Identifiable Information) through a server. The site requires your permission to access your location. Your coordinates are sent to Open-Meteo to retrieve weather data for you. Favourite cities and cached weather responses are stored locally in local storage, hence the "local" in local storage. I do not operate a backend for this site nor does this communicate with any other except Open-Meteo. 
 
 ## Credits
 
