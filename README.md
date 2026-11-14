@@ -39,7 +39,16 @@ SkyCast/
 │   ├── style.css
 │   └── mobile.css
 ├── js/
-│   └── app.js
+│   ├── state.js          # DOM refs, shared state and 
+│   ├── weathercodes.js   # WMO weather code lookup
+│   ├── status.js         # Status bar messages
+│   ├── api.js            # Open-Meteo forecast request
+│   ├── search.js         # City search
+│   ├── weather.js        # Refresh and display current 
+│   ├── forecast.js       # Hourly and daily forecast 
+│   ├── location.js       # "Use my location"
+│   ├── favourites.js     # Favourite cities (localStorage)
+│   └── app.js            # Event wiring and startup
 └── README.md
 ```
 
