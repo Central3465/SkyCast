@@ -65,8 +65,11 @@ async function getweather(location) {
         timezone: "auto",
         daily: [
             "precipitation_probability_max",
-            "precipitation_sum",
+            "weather_code",
+            "temperature_2m_max",
+            "temperature_2m_min"
         ].join(","),
+        forecast_days: 6,
         hourly: [
             "temperature_2m",
             "weather_code",
@@ -188,6 +191,7 @@ function displayweather(location, weatherdata) {
 
     hidestatus();
     displayhourly(weatherdata);
+    displaydaily(weatherdata);
     weathersection.classList.remove("hidden");
 }
 
@@ -236,7 +240,7 @@ function displayhourly(weatherdata) {
         container.textContent = "Hourly data unavailable.";
         return;
     }
-    // current.time is 15-minute aligned; compare against the start of the current hour
+    // current.time is 15-minute aligned so compare against the start of the current hour
     const currenthour = `${weatherdata.current.time.slice(0, 13)}:00`;
     let startIndex = hourly.time.findIndex(time => time >= currenthour);
     if (startIndex === -1) startIndex = 0;
@@ -261,6 +265,43 @@ function displayhourly(weatherdata) {
         rain.className = "hourly-rain";
         rain.textContent = probability == null ? "No data" : `${probability}%`;
         card.append(timeElement, icon, temperature, rain);
+        container.appendChild(card);
+    });
+}
+
+function displaydaily(weatherdata) {
+    const container = document.getElementById("dailyforecast");
+    const daily = weatherdata.daily;
+    container.replaceChildren();
+    if (!daily || !daily.time || daily.time.length === 0) {
+        container.textContent = "Data unavailable.";
+        return;
+    }
+    daily.time.slice(0, 5).forEach((date, index) => {
+        const code = daily.weather_code[index];
+        const weather = weathercodes[code] || ["Unknown", "🌍"];
+        const card = document.createElement("div");
+        card.className = "daily-card";
+        const day = document.createElement("div");
+        day.className = "daily-day";
+        day.textContent = index === 0 ? "Today" : new Intl.DateTimeFormat("en-GB", { weekday: "short", timeZone: weatherdata.timezone }).format(new Date(`${date}T12:00:00`));
+        const weatherinfo = document.createElement("div");
+        weatherinfo.className = "daily-weather";
+        const icon = document.createElement("span");
+        icon.className = "daily-icon";
+        icon.textContent = weather[1];
+        const description = document.createElement("span");
+        description.className = "daily-desc";
+        description.textContent = weather[0];
+        weatherinfo.append(icon, description);
+        const temperatures = document.createElement("span");
+        temperatures.className = "daily-temps";
+        temperatures.textContent = `${Math.round(daily.temperature_2m_max[index])}°C / ${Math.round(daily.temperature_2m_min[index])}°C`;
+        const rain = document.createElement("span");
+        rain.className = "daily-rain";
+        const probability = daily.precipitation_probability_max[index];
+        rain.textContent = probability == null ? "No data" : `${probability}%`;
+        card.append(day, weatherinfo, temperatures, rain);
         container.appendChild(card);
     });
 }
