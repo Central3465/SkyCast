@@ -484,7 +484,7 @@ body {
     }
 }
 
-.location-button {
+.locationbtn{
     margin-top: 12px;
     padding: 12px 17px;
     background: transparent;
@@ -498,11 +498,11 @@ body {
     transition: background 0.2s;
 }
 
-.location-button:hover {
+.locationbtn:hover {
     background: #ffffff20; /* this is grey color for my future self */
 }
 
-.location-button:disabled {
+.locationbtn:disabled {
     opacity: 0.5s;
     cursor: wait;
 }
