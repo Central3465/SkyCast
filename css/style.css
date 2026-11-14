@@ -483,3 +483,26 @@ body {
         font-size: 11px;
     }
 }
+
+.location-button {
+    margin-top: 12px;
+    padding: 12px 17px;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.location-button:hover {
+    background: #ffffff20; /* this is grey color for my future self */
+}
+
+.location-button:disabled {
+    opacity: 0.5s;
+    cursor: wait;
+}
