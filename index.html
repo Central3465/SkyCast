@@ -33,8 +33,18 @@
                     <button type="submit" id="searchbtn">Search</button>
                 </div>
             </form>
-            <button type="button" id="locatebtn" class="locationbtn">Use my location</button>
         </section>
+        <button type="button" id="locatebtn" class="locationbtn">Use my location</button>
+
+        <section class="favourite">
+            <div class="forecasthead">
+                <h3>Favourite cities</h3>
+                <span>Saved in local storage</span>
+            </div>
+            <div id="favouriteslist" class="favourites-list">
+                <p>No favourite cities, why not add some?!</p>
+            </div>
+        </section> 
 
         <div id="status" class="status hidden" role="status" aria-live="polite">
             <div class="loadingwheel"></div>
@@ -52,6 +62,7 @@
                     </div>
                     <div class="wactions">
                         <button id="refreshbtn" type="button" title="Refresh weather" aria-label="Refresh weather">↻</button>
+                        <button id="favouritebtn" type="button" aria-label="Save this city">⭐</button>
                         <span id="wicon" class="wicon" aria-hidden="true">🌤️</span>
                     </div>
                 </div>
