@@ -1,3 +1,19 @@
+:root {
+    --bg: #0b1220;
+    --card: #131c31;
+    --panel: #1b2742;
+    --border: #2f4066;
+    --text: #f1f5f9;
+    --muted: #a9b6cf;
+    --accent: #38bdf8;
+    --accent-text: #06223a;
+    --warn: #fbbf24;
+    --error-bg: #7f1d1d;
+    --error-border: #f87171;
+    --disabled-bg: #475569;
+    --disabled-text: #cbd5e1;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,10 +21,11 @@
 }
 
 body {
-    font-family: Arial, 'Inter', sans-serif;
-    background-color: blue;
-    color: white;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
     min-height: 100vh;
+    line-height: 1.4;
 }
 
 .container {
@@ -21,23 +38,24 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 85px;
+    margin-bottom: 70px;
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: white;
+    color: var(--accent);
     text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
 .headlabel {
     font-size: 11px;
     letter-spacing: 2px;
-    color: white;
+    color: var(--muted);
 }
 
 .hello {
@@ -45,7 +63,7 @@ body {
 }
 
 .tagline {
-    color: white;
+    color: var(--accent);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -56,12 +74,13 @@ body {
     font-size: 48px;
     font-weight: 800;
     letter-spacing: -2px;
-    margin-bottom: 12px;
+    line-height: 1.1;
+    margin-bottom: 14px;
 }
 
 .subtitle {
-    color: blueviolet;
-    font-size: 15px;
+    color: var(--muted);
+    font-size: 16px;
     line-height: 1.7;
 }
 
@@ -71,20 +90,21 @@ body {
 
 .searchbox {
     display: flex;
-    align-items:center;
+    align-items: center;
     gap: 12px;
-    background:yellowgreen;
-    border:1px solid white;
+    background: var(--card);
+    border: 1px solid var(--border);
     border-radius: 14px;
-    padding:8px 9px 8px 17px;
-    transition:border-color 0.2s;
+    padding: 8px 9px 8px 17px;
 }
 
-.searchbox:focus-within{
-    border-color: blue;
-    transition: font-size 0.2s;
-    font-size:25px;
-    color:brown;
+.searchbox:focus-within {
+    border-color: var(--accent);
+}
+
+.searchicon {
+    color: var(--muted);
+    font-size: 20px;
 }
 
 .searchbox input {
@@ -93,33 +113,29 @@ body {
     background: transparent;
     border: none;
     outline: none;
-    color: white;
+    color: var(--text);
     font-family: inherit;
-    font-size: 14px;
+    font-size: 15px;
 }
 
-.searchbox input::placeholder{
-    color: grey;
+.searchbox input::placeholder {
+    color: var(--muted);
 }
 
 .searchbox button {
-    background: blue;
-    color: white;
+    background: var(--accent);
+    color: var(--accent-text);
     border: none;
-    padding: 13px 20px;
+    padding: 13px 22px;
     border-radius: 9px;
     font-family: inherit;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: background 0.2s;
-}
-
-.searchbox button:hover {
-    background:darkblue;
 }
 
 .searchbox button:disabled {
-    background: grey;
+    background: var(--disabled-bg);
+    color: var(--disabled-text);
     cursor: not-allowed;
 }
 
@@ -127,50 +143,37 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    background: blueviolet;
-    border: 1px solid white;
-    color: white;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text);
     padding: 18px;
     border-radius: 12px;
     margin-bottom: 20px;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .status.error {
-    background: red;
-    color: white;
+    background: var(--error-bg);
+    border-color: var(--error-border);
+    color: var(--text);
 }
 
 .loadingwheel {
     width: 19px;
     height: 19px;
-    border: 3px solid white;
-    border-top-color: transparent;
+    border: 3px solid var(--accent);
+    border-top-color: var(--panel);
     border-radius: 50%;
-    animation: spin 0.8s linear infinite;
     flex-shrink: 0;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-#searchbtn:disabled,
-#refreshbtn:disabled {
-    opacity: 0.5;
-    cursor: wait;
 }
 
 .status.error .loadingwheel {
     display: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .loadingwheel {
-        animation: none;
-    }
+#searchbtn:disabled,
+#refreshbtn:disabled {
+    cursor: wait;
 }
 
 .hidden {
@@ -178,56 +181,88 @@ body {
 }
 
 .wcard {
-    background: blueviolet;
-    border: 1px solid white;
+    background: var(--card);
+    border: 1px solid var(--border);
     border-radius: 22px;
     padding: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .wtop {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
+}
+
+.title {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
 }
 
 .wtop h2 {
-    font-size: 27px;
+    font-size: 28px;
     margin-bottom: 8px;
 }
 
 .date {
-    color: white;
-    font-size: 13px;
+    color: var(--text);
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.lastupdated {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.wactions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.wicon {
+    font-size: 56px;
+    line-height: 1;
 }
 
 .temp {
     display: flex;
     align-items: flex-start;
     margin-top: 25px;
+    color: var(--text);
 }
 
 .temp span {
     font-size: 80px;
     font-weight: 700;
     letter-spacing: -5px;
+    line-height: 1;
 }
 
 .unit {
     font-size: 30px;
     margin-top: 12px;
+    color: var(--accent);
+    letter-spacing: 0;
 }
 
-.weather-desc {
-    color: white;
-    font-size: 16px;
-    margin-top: 5px;
+.weather-desc,
+.weatherdesc {
+    color: var(--muted);
+    font-size: 17px;
+    margin-top: 8px;
     text-transform: capitalize;
 }
 
 .divider {
     height: 1px;
-    background: white;
+    background: var(--border);
     margin: 30px 0;
 }
 
@@ -241,71 +276,73 @@ body {
     display: flex;
     align-items: center;
     gap: 13px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
 }
 
 .detail p {
-    color: white;
+    color: var(--muted);
     font-size: 12px;
     margin-bottom: 5px;
 }
 
 .detail strong {
-    font-size: 15px
+    color: var(--text);
+    font-size: 16px;
 }
 
 .stinky-feet p {
-    color: white;
+    color: var(--muted);
     text-decoration: none;
 }
 
 #refreshbtn {
-    background: blue;
-    border: 1px solid white;
-    color: white;
+    background: var(--accent);
+    border: none;
+    color: var(--accent-text);
     border-radius: 10px;
     width: 38px;
     height: 38px;
-    font-size: 23px;
+    font-size: 22px;
+    font-weight: 700;
     cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-}
-
-#refreshbtn:hover {
-    background: darkblue;
-    transform: rotate(45deg);
 }
 
 #refreshbtn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+    background: var(--disabled-bg);
+    color: var(--disabled-text);
 }
 
 .predrain {
     display: flex;
     align-items: center;
     gap: 14px;
-    background: blueviolet;
-    border: 1px solid white;
+    background: var(--panel);
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 16px;
     margin-top: 22px;
 }
 
 .predrain > span {
-    font-size: 28px;
+    font-size: 30px;
 }
 
 .predrain p {
-    color: white;
+    color: var(--muted);
     font-size: 12px;
     margin-bottom: 5px;
 }
 
 .predrain strong {
+    color: var(--text);
     font-size: 14px;
 }
 
-.hourly-section {
+.hourly-section,
+.hourlysection {
     margin-top: 30px;
 }
 
@@ -318,12 +355,14 @@ body {
 
 .forecasthead h3 {
     font-size: 17px;
+    color: var(--text);
 }
 
 .forecasthead span {
     font-size: 10px;
     letter-spacing: 1px;
-    opacity: 0.7;
+    text-transform: uppercase;
+    color: var(--accent);
 }
 
 .hourlyforecast {
@@ -336,15 +375,15 @@ body {
 .hourly-card {
     flex: 0 0 88px;
     text-align: center;
-    background: blueviolet;
-    border: 1px solid white;
+    background: var(--panel);
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 14px 8px;
 }
 
 .hourly-time {
     font-size: 12px;
-    opacity: 0.8;
+    color: var(--muted);
 }
 
 .hourly-icon {
@@ -356,12 +395,13 @@ body {
 .hourly-temp {
     font-size: 17px;
     font-weight: 700;
+    color: var(--text);
 }
 
 .hourly-rain {
     font-size: 11px;
     margin-top: 9px;
-    opacity: 0.75;
+    color: var(--accent);
 }
 
 .dailysection {
@@ -379,15 +419,16 @@ body {
     grid-template-columns: 1fr auto 1fr 1fr;
     align-items: center;
     gap: 12px;
-    background: white;
-    border: 1px solid white;
+    background: var(--panel);
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 15px;
+    color: var(--text);
 }
 
 .daily-day {
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 .daily-weather {
@@ -401,23 +442,29 @@ body {
 }
 
 .daily-desc {
-    font-size: 11px;
-    opacity: 0.8;
+    font-size: 12px;
+    color: var(--muted);
 }
 
-.daily-temp {
+.daily-temp,
+.daily-temps {
     text-align: right;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
+    color: var(--text);
 }
 
 .daily-rain {
     text-align: right;
     font-size: 12px;
-    opacity: 0.8;
+    color: var(--accent);
 }
 
 @media (max-width: 550px) {
+    .hello h1 {
+        font-size: 36px;
+    }
+
     .daily-card {
         grid-template-columns: 1fr auto 1fr;
         gap: 8px;
