@@ -17,7 +17,21 @@ function choosesuggestion(location) {
     currentloc = location
     closesuggestions()
     weathersection.classList.add("hidden")
-    refreshweather()
+    refreshweather();
+}
+
+function updatesuggestionselection() {
+    const buttons = suggestionsbox.querySelectorAll(".suggestion")
+    buttons.forEach((b, i) => {
+        const active = i === activesuggestionindex
+        b.classList.toggle("active", active)
+        b.setAttribute("aria-selected", String(active))
+    })
+    if (activesuggestionindex >= 0) {
+        cityinput.setAttribute("aria-activedescendant", `suggestion-${activesuggestionindex}`)
+    } else {
+        cityinput.removeAttribute("aria-activedescendant")
+    }
 }
 
 function displaysuggestions(results) {
@@ -27,14 +41,16 @@ function displaysuggestions(results) {
 
     currentsuggestions = results;
 
-    results.forEach((location, index) => {
+    results.forEach((l, i) => {
         const button = document.createElement("button")
 
         button.type = "button"
+        button.id = `suggestion-${index}`
         button.className = "suggestion"
         button.setAttribute("role", "option")
+        button.setAttribute("aria-selected", "false")
 
-        const details = [ location.admin1, location.country].filter(Boolean).join(", ")
+        const details = [ l.admin1, l.country].filter(Boolean).join(", ")
 
         button.textContent = details ? `${location.name} - ${details}` : location.name
 
@@ -46,6 +62,7 @@ function displaysuggestions(results) {
     })
 
     suggestionsbox.classList.remove("hidden")
+    cityinput.setAttribute("aria-expanded", "true")
 }
 
 async function getsuggestions(query) {
@@ -114,21 +131,15 @@ cityinput.addEventListener("keydown", event => {
             ? currentsuggestions.length - 1
             : activesuggestionindex - 1
     } else if (event.key === "Enter") {
-        event.preventDefault();
-
-        const index = activesuggestionindex === -1 ? 0 : activesuggestionindex;
-
-        choosesuggestion(currentsuggestions[index])
+        if (activesuggestionindex === -1) return;
+        event.preventDefault()
+        choosesuggestion(currentsuggestions[activesuggestionindex])
         return
     } else {
         return;
     }
 
-    const buttons = suggestionsbox.querySelectorAll(".suggestion");
-
-    buttons.forEach((button, index) => {
-        button.classList.toggle("active", index === activesuggestionindex)
-    })
+    updatesuggestionselection()
 })
 
 document.addEventListener("click", event => {
