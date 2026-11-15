@@ -63,6 +63,7 @@
                     <div class="wactions">
                         <button id="refreshbtn" type="button" title="Refresh weather" aria-label="Refresh weather">↻</button>
                         <button id="favouritebtn" type="button" aria-label="Save this city">⭐</button>
+                        <button id="unitbtn" type="button" aria-label="Toggle temperature unit">°C</button>
                         <span id="wicon" class="wicon" aria-hidden="true">🌤️</span>
                     </div>
                 </div>
@@ -128,8 +129,8 @@
         -->
     </main>
 
-    <!-- Classic scripts (not modules) so functions stay global. Order matters: state first, app.js last. -->
     <script src="js/state.js"></script>
+    <script src="js/unit.js"></script>
     <script src="js/weathercodes.js"></script>
     <script src="js/status.js"></script>
     <script src="js/api.js"></script>

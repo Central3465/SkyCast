@@ -1,5 +1,6 @@
 function displayweather(location, weatherdata) {
     const current = weatherdata.current;
+    currentWeatherData = weatherdata
     const prob = weatherdata.daily.precipitation_probability_max[0];
     const fallrain = weatherdata.daily.precipitation_sum[0] ?? 0;
     const rainmsg = document.getElementById("rainmsg");
@@ -37,12 +38,13 @@ function displayweather(location, weatherdata) {
         }).format(new Date());
 
     document.getElementById("wicon").textContent = weather[1];
-    document.getElementById("temp").textContent = Math.round(current.temperature_2m);
+    document.getElementById("temp").textContent = Math.round(convertTemp(current.temperature_2m));
     document.getElementById("weather-desc").textContent = weather[0];
-    document.getElementById("feelslike").textContent = `${Math.round(current.apparent_temperature)}°C`;
+    document.getElementById("feelslike").textContent = `${Math.round(convertTemp(current.apparent_temperature))}`;
     document.getElementById("humidity").textContent = `${current.relative_humidity_2m}%`;
     document.getElementById("precipitation").textContent = `${current.precipitation} mm`;
     document.getElementById("windspeed").textContent = `${Math.round(current.wind_speed_10m)} km/h`;
+    document.getElementById(".unit").textContent = `°${temperatureUnit}`;
 
     const updatedAt = new Date(current.time);
     lastupdated.textContent = `Last updated: ${new Intl.DateTimeFormat("en-GB", {

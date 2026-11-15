@@ -26,7 +26,7 @@ function displayhourly(weatherdata) {
         icon.textContent = weather[1];
         const temperature = document.createElement("div");
         temperature.className = "hourly-temp";
-        temperature.textContent = `${Math.round(hourly.temperature_2m[dataIndex])}°C`;
+        temperature.textContent = formatTemp(hourly.temperature_2m[dataIndex])
         const rain = document.createElement("div");
         rain.className = "hourly-rain";
         rain.textContent = probability == null ? "No data" : `${probability}%`;
@@ -62,7 +62,7 @@ function displaydaily(weatherdata) {
         weatherinfo.append(icon, description);
         const temperatures = document.createElement("span");
         temperatures.className = "daily-temps";
-        temperatures.textContent = `${Math.round(daily.temperature_2m_max[index])}°C / ${Math.round(daily.temperature_2m_min[index])}°C`;
+        temperatures.textContent = `${formatTemp(daily.temperature_2m_max[index])} / ${formatTemp(daily.temperature_2m_min[index])}`;
         const rain = document.createElement("span");
         rain.className = "daily-rain";
         const probability = daily.precipitation_probability_max[index];

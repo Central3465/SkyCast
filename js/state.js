@@ -10,8 +10,11 @@ const favouriteslist = document.getElementById("favouriteslist");
 const favouritebtn = document.getElementById("favouritebtn");
 
 let currentloc = null;
+let currentWeatherData = null;
 let requestid = 0; // guards against stale responses overwriting newer ones
 const HOURS_SHOWN = 8;
 const FAVOURITES_KEY = "favourite-cities";
 const CACHE_KEY = "cached-weather-data";
 const CACHE_DUE = 10 * 60 * 1000;
+
+let temperatureUnit = localStorage.getItem("temperatureUnit") || "C";
