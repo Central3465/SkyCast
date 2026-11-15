@@ -29,9 +29,10 @@
             <form id="sform">
                 <div class="searchbox">
                     <span class="searchicon" aria-hidden="true">⌕</span>
-                    <input type="text" id="cityinput" placeholder="Search for a city..." autocomplete="off" required>
+                    <input type="text" id="cityinput" placeholder="Search for a city..." autocomplete="off" aria-autocomplete="list" aria-controls="suggestions" required>
                     <button type="submit" id="searchbtn">Search</button>
                 </div>
+                <div id="suggestions" class="suggestions hidden" role="listbox"></div>
             </form>
         </section>
         <button type="button" id="locatebtn" class="locationbtn">Use my location</button>
@@ -160,6 +161,7 @@
     <script src="js/status.js"></script>
     <script src="js/api.js"></script>
     <script src="js/search.js"></script>
+    <script src="js/autocomplete.js"></script>
     <script src="js/weather.js"></script>
     <script src="js/win.js"></script>
     <script src="js/alerts.js"></script>

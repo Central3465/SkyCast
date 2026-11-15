@@ -88,6 +88,10 @@ body {
     margin-bottom: 35px;
 }
 
+.search form {
+    position: relative
+}
+
 .searchbox {
     display: flex;
     align-items: center;
@@ -658,4 +662,40 @@ body {
 .no-alerts {
     color: var(--muted);
     font-size: 13px
+}
+
+.suggestions {
+    position: absolute;
+    top: cacl(100% + 8px);
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px #00000040
+}
+
+.suggestion {
+    display: block;
+    width: 100%;
+    padding: 14px 17px;
+    text-align: left;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.suggestion:hover,
+.suggestion.active {
+    background: var(--panel);
+    color: var(--accent)
+}
+
+.suggestion + .suggestion {
+    border-top: 1px solid var(--border);
 }
