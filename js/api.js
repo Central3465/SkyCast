@@ -42,7 +42,15 @@ async function getweather(location) {
             "wind_gusts_10m"
         ].join(",")
     });
-    const response = await fetch(url);
+    let response
+    try {
+        response = await fetch(url)
+    } catch (error) {
+        if (!navigator.onLine) {
+            throw new Error("you are offline, please check your internet connection and try again")
+        }
+        throw new Error("unable to reach open-meteo, try again later?")
+    }
     if (!response.ok) {
         throw new Error(`Weather API: ${response.status} ${response.statusText}`);
     }

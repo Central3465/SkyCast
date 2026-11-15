@@ -16,3 +16,11 @@ locatebtn.addEventListener("click", findmylocation);
 favouritebtn.addEventListener("click", togglefavourite);
 
 renderfavourites();
+
+window.addEventListener("offline", () => {
+    showstatus("you're offline so skycast will not work as requests to open-meteo require a stable internet conneciton.", true)
+})
+
+window.addEventListener("online", () => {
+    hidestatus()
+})
