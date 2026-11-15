@@ -19,7 +19,11 @@ async function getweather(location) {
             "precipitation_sum",
             "temperature_2m_max",
             "temperature_2m_min",
-            "weathercode"
+            "weather_code",
+            "sunrise",
+            "sunset",
+            "uv_index_max",
+            "daylight_duration"
         ].join(","),
         hourly: [
             "temperature_2m",

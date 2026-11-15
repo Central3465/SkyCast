@@ -311,6 +311,12 @@ body {
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 14px 16px;
+    min-height: 75px;
+    transition: border-color 0.2s ease;
+}
+
+.detail:hover {
+    border-color: var(--accent)
 }
 
 .detail p {
