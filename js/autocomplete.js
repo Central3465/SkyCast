@@ -45,17 +45,17 @@ function displaysuggestions(results) {
         const button = document.createElement("button")
 
         button.type = "button"
-        button.id = `suggestion-${index}`
+        button.id = `suggestion-${i}`
         button.className = "suggestion"
         button.setAttribute("role", "option")
         button.setAttribute("aria-selected", "false")
 
-        const details = [ l.admin1, l.country].filter(Boolean).join(", ")
+        const details = [l.admin1, l.country].filter(Boolean).join(", ")
 
-        button.textContent = details ? `${location.name} - ${details}` : location.name
+        button.textContent = details ? `${l.name} - ${details}` : l.name
 
         button.addEventListener("click", () => {
-            choosesuggestion(location)
+            choosesuggestion(l)
         })
 
         suggestionsbox.appendChild(button)

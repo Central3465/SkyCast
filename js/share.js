@@ -13,7 +13,7 @@ async function shareweather() {
 
     const message = [
         `Weather in ${city}`,
-        `Temperature is ${Math.round(convertTemp(current.temperature_2m))}৹${temperatureUnit}`,
+        `Temperature is ${formatTemp(current.temperature_2m)}`,
         `Conditions are ${weather[0]}`,
         `Feels like ${formatTemp(current.apparent_temperature)}`,
         `Humidity is ${current.relative_humidity_2m}%`,

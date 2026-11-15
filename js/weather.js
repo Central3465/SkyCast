@@ -1,7 +1,6 @@
 function displayweather(location, weatherdata) {
     const current = weatherdata.current;
-    updateWeatherTheme(current.weather_code);
-    currentWeatherData = weatherdata
+    currentWeatherData = weatherdata;
     const prob = weatherdata.daily.precipitation_probability_max[0];
     const fallrain = weatherdata.daily.precipitation_sum[0] ?? 0;
     const rainmsg = document.getElementById("rainmsg");
@@ -47,12 +46,8 @@ function displayweather(location, weatherdata) {
     document.getElementById("windspeed").textContent = `${Math.round(current.wind_speed_10m)} km/h`;
     document.querySelector(".unit").textContent = `°${temperatureUnit}`;
 
-    const updatedAt = new Date(current.time);
-    lastupdated.textContent = `Last updated: ${new Intl.DateTimeFormat("en-GB", {
-        hour: "2-digit",
-        minute: "2-digit",
-        timeZone: weatherdata.timezone
-    }).format(updatedAt)}`;
+    // current.time is local to the city (e.g. "2026-11-15T14:15"), so read the clock time directly
+    lastupdated.textContent = `Last updated: ${current.time.slice(11, 16)}`;
 
     hidestatus();
     displayhourly(weatherdata);
@@ -60,7 +55,7 @@ function displayweather(location, weatherdata) {
     displaymoremore(weatherdata);
     displayWindDetails(current);
     displayWeatherAlerts(weatherdata);
-    saveRecentSearch(location)
+    saveRecentSearch(location);
     updatefavouritebtn();
     weathersection.classList.remove("hidden");
 }
@@ -85,26 +80,4 @@ async function refreshweather() {
         refreshbtn.disabled = false;
         refreshbtn.textContent = "↻";
     }
-}
-
-function updateWeatherTheme(code) {
-    const card = document.querySelector(".wcard");
-    card.classList.remove("theme-sunny", "theme-cloudy", "theme-rainy", "theme-snowy", "theme-stormy", "theme-foggy");
-    let theme;
-    if ([0, 1].includes(code)) {
-        theme = "theme-sunny";
-    } else if ([2, 3].includes(code)) {
-        theme = "theme-cloudy";
-    } else if ([45, 48].includes(code)) {
-        theme = "theme-foggy";
-    } else if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) {
-        theme = "theme-rainy";
-    } else if ([71, 73, 75, 77, 85, 86].includes(code)) {
-        theme = "theme-snowy";
-    } else if ([95, 96, 99].includes(code)) {
-        theme = "theme-stormy";
-    } else {
-        theme = "theme-sunny";
-    }
-    card.classList.add(theme);
 }

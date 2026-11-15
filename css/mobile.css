@@ -1,18 +1,19 @@
 @media (max-width: 550px) {
     .container {
-        padding: 35px 15px;
+        padding: 40px 16px 56px;
     }
 
     .head {
-        margin-bottom: 65px;
+        margin-bottom: 48px;
     }
 
     .headlabel {
-        font-size: 9px;
+        font-size: 11px;
+        text-align: right;
     }
 
     .hello {
-        margin-bottom: 45px;
+        margin-bottom: 36px;
     }
 
     .searchbox {
@@ -21,22 +22,39 @@
     }
 
     .searchbox button {
-        padding: 12px 13px;
+        padding: 0 14px;
     }
 
     .wcard {
-        padding: 23px 19px;
+        padding: 28px 20px;
     }
 
-    .temp span {
-        font-size: 67px;
+    .wtop {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .wactions {
+        justify-content: flex-start;
+    }
+
+    .temp {
+        margin-top: 28px;
+    }
+
+    .divider {
+        margin: 32px 0;
     }
 
     .wdetails {
-        gap: 22px 12px
+        gap: 14px;
     }
 
-    .stinky-feet {
-        margin-top: 45px;
+    .detail {
+        padding: 16px;
+    }
+
+    .hourly-card {
+        flex-basis: 84px;
     }
 }

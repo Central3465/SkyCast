@@ -12,10 +12,9 @@
 - Refresh the current city's weather using saved coordinates.
 - Responsive layout for desktop and mobile, sure.
 - Loading (an animated loading state instead of the generic message 🤯) and error messages.
-- A cleaner and darker UI, no more ugly old hags 🥳!
+- A clean, light UI with a single fixed colour palette.
 - Autocomplete using Open-Meteo API with a 350ms debounce.
-- Recent searches that is saved to local storage.
-- New dynamic background themes that dynamically change depending on the weather. 😊
+- Recent searches are saved to local storage.
 - Users can now share the current weather using the clipboard!
 
 ## How do I access it?
