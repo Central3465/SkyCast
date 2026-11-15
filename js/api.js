@@ -37,7 +37,9 @@ async function getweather(location) {
             "apparent_temperature",
             "precipitation",
             "weather_code",
-            "wind_speed_10m"
+            "wind_speed_10m",
+            "wind_direction_10m",
+            "wind_gusts_10m"
         ].join(",")
     });
     const response = await fetch(url);

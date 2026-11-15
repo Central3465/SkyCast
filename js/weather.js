@@ -58,6 +58,7 @@ function displayweather(location, weatherdata) {
     displayhourly(weatherdata);
     displaydaily(weatherdata);
     displaymoremore(weatherdata);
+    displayWindDetails(current);
     updatefavouritebtn();
     weathersection.classList.remove("hidden");
 }
