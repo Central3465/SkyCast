@@ -10,11 +10,11 @@ function formatTemp(celsius) {
 }
 
 function toggleTempUnit() {
-    temperatureUnit = (temperatureUnit == "C") ? "F" : "C";
+    temperatureUnit = (temperatureUnit === "C") ? "F" : "C";
     localStorage.setItem("temperatureUnit", temperatureUnit);
     updateunitbtn();
     if (currentWeatherData && currentloc) {
-        displayWeather(currentloc, currentWeatherData);
+        displayweather(currentloc, currentWeatherData);
     }
 }
 
@@ -26,4 +26,4 @@ function updateunitbtn() {
 
 document.getElementById("unitbtn").addEventListener("click", toggleTempUnit);
 
-updateUnitBtn();
+updateunitbtn();

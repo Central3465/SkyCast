@@ -41,11 +41,11 @@ function displayweather(location, weatherdata) {
     document.getElementById("wicon").textContent = weather[1];
     document.getElementById("temp").textContent = Math.round(convertTemp(current.temperature_2m));
     document.getElementById("weather-desc").textContent = weather[0];
-    document.getElementById("feelslike").textContent = `${Math.round(convertTemp(current.apparent_temperature))}`;
+    document.getElementById("feelslike").textContent = formatTemp(current.apparent_temperature);
     document.getElementById("humidity").textContent = `${current.relative_humidity_2m}%`;
     document.getElementById("precipitation").textContent = `${current.precipitation} mm`;
     document.getElementById("windspeed").textContent = `${Math.round(current.wind_speed_10m)} km/h`;
-    document.getElementById(".unit").textContent = `°${temperatureUnit}`;
+    document.querySelector(".unit").textContent = `°${temperatureUnit}`;
 
     const updatedAt = new Date(current.time);
     lastupdated.textContent = `Last updated: ${new Intl.DateTimeFormat("en-GB", {
@@ -86,14 +86,14 @@ async function refreshweather() {
     }
 }
 
-function updateWeatherTheme() {
+function updateWeatherTheme(code) {
     const card = document.querySelector(".wcard");
     card.classList.remove("theme-sunny", "theme-cloudy", "theme-rainy", "theme-snowy", "theme-stormy", "theme-foggy");
     let theme;
     if ([0, 1].includes(code)) {
-        theme = "themme-sunny";
+        theme = "theme-sunny";
     } else if ([2, 3].includes(code)) {
-        theme = "themme-cloudy";
+        theme = "theme-cloudy";
     } else if ([45, 48].includes(code)) {
         theme = "theme-foggy";
     } else if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) {

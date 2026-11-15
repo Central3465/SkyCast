@@ -8,14 +8,14 @@ function formatLocalTime(isoTime, timezone) {
 }
 
 function formatduration(seconds) {
-    if (seconds === null) return "not available";
+    if (seconds == null) return "not available";
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     return `${hours}h ${minutes}m`;
 }
 
 function getUVDesc(uv) {
-    if (uv === null) return "not available";
+    if (uv == null) return "not available";
     if (uv < 3) return `${uv} - Low`;
     if (uv < 6) return `${uv} - Moderate`;
     if (uv < 8) return `${uv} - High`;
@@ -26,7 +26,6 @@ function getUVDesc(uv) {
 function displaymoremore(weatherdata) {
     const daily = weatherdata.daily;
     if (!daily || !daily.time?.length) return;
-    document.getElementById("sunrise").textContent = formatLocalTime(daily.sunrise?.[0], weatherdata.timezone);
     document.getElementById("sunset").textContent = formatLocalTime(daily.sunset?.[0], weatherdata.timezone);
     document.getElementById("uvindex").textContent = getUVDesc(daily.uv_index_max?.[0]);
     document.getElementById("daylight").textContent = formatduration(daily.daylight_duration?.[0]);

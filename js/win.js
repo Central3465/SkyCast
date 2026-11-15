@@ -1,11 +1,11 @@
 function getwindDirection(degrees) {
     if (degrees == null) return "not available";
 
-    const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+    const directions = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
     return directions[Math.round(degrees / 22.5) % 16];
 }
 
-function dislayWindDetails(current) {
+function displayWindDetails(current) {
     const direction = current.wind_direction_10m;
     const gusts = current.wind_gusts_10m;
     document.getElementById("winddirection").textContent = direction == null ? "not available" : `${getwindDirection(direction)} (${Math.round(direction)})`

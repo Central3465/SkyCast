@@ -30,10 +30,10 @@ function findmylocation() {
                 message = "Request timed out, this could be a slow connection or you're in a tunnel, try again when you reach clear skies (oh wait you need my app to know that 😏).";
                 break;
             default:
-                message = "Wow, an unexpected and unknown error occured. Please try again, if it still doesn't work, open an issue on Github.";
+                message = "Wow, an unexpected and unknown error occurred. Please try again, if it still doesn't work, open an issue on Github.";
         }
         showstatus(message, true);
         locatebtn.disabled = false;
         locatebtn.textContent = "Use my location";
-    }, { enabledHighAccuracy: true, timeout: 10000, maximumAge: 300000 });
-};
+    }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 300000 });
+}

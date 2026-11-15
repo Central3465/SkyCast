@@ -6,7 +6,7 @@
 
 ## Features
 
-- Search for a city by name or your location!.
+- Search for a city by name or use your location!
 - View current temperature, feels-like temperature, humidity, wind speed and precipitation.
 - A nice TL:DR short summary with an emoji. 
 - Refresh the current city's weather using saved coordinates.
@@ -39,13 +39,17 @@ SkyCast/
 │   ├── style.css
 │   └── mobile.css
 ├── js/
-│   ├── state.js          # DOM refs, shared state and 
+│   ├── state.js          # DOM refs, shared state and constants
+│   ├── unit.js           # Celsius/Fahrenheit toggle
 │   ├── weathercodes.js   # WMO weather code lookup
 │   ├── status.js         # Status bar messages
-│   ├── api.js            # Open-Meteo forecast request
+│   ├── api.js            # Open-Meteo forecast request and caching
 │   ├── search.js         # City search
-│   ├── weather.js        # Refresh and display current 
-│   ├── forecast.js       # Hourly and daily forecast 
+│   ├── weather.js        # Refresh and display current weather
+│   ├── win.js            # Wind direction and gusts
+│   ├── alerts.js         # Weather alerts
+│   ├── forecast.js       # Hourly and daily forecast
+│   ├── moremore.js       # Sunset, UV index and daylight
 │   ├── location.js       # "Use my location"
 │   ├── favourites.js     # Favourite cities (localStorage)
 │   └── app.js            # Event wiring and startup
@@ -60,7 +64,7 @@ I respect your privacy. Although there is no need for a dedicated privacy policy
 
 Open-Meteo - https://open-meteo.com/
 
-# Contributing
+## Contributing
 
 Thank you for your intent to support this project, however I cannot allow pull requests, unless the issue is too drastic and I have been notified beforehand, due to this project being archived within a few days. I don't want you to waste your time on writing a code change just for it to be ignored by me, unintentionally. 
 

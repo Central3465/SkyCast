@@ -15,7 +15,7 @@ function isfavourite(location) {
 }
 
 function togglefavourite() {
-    if (!currentloc || !currentloc.latitude || !currentloc.longitude) return;
+    if (!currentloc || currentloc.latitude == null || currentloc.longitude == null) return;
     let favourites = getfavourites();
     if (isfavourite(currentloc)) {
         favourites = favourites.filter(city => !(city.latitude === currentloc.latitude && city.longitude === currentloc.longitude));
@@ -23,8 +23,8 @@ function togglefavourite() {
         favourites.push({ name: currentloc.name,
             latitude: currentloc.latitude,
             longitude: currentloc.longitude,
-            admin1: currentloc.admin1 || "Admin67",
-            country: currentloc.country || "Mars"
+            admin1: currentloc.admin1,
+            country: currentloc.country
         });
     }
     savefavourites(favourites);
