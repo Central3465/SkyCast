@@ -612,3 +612,50 @@ body {
     font-size: 22px;
     transition: transform 0.4s ease;
 }
+
+.alerts-section {
+    margin-top: 30px;
+}
+
+.alerts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.weather-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--panel)
+}
+
+.weather-alert > span {
+    font-size: 23px;
+}
+
+.weather-alert strong {
+    font-size: 14px;
+}
+
+.weather-alert p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.weather-alert.warning {
+    border-color: #b7791f;
+}
+
+.weather-alert.danger {
+    border-color: #dc4545;
+}
+
+.no-alerts {
+    color: var(--muted);
+    font-size: 13px
+}
