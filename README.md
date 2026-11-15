@@ -16,7 +16,7 @@
 
 ## How do I access it?
 
-There will be a Github Pages link here and on the repo once I have it set up.
+https://central3465.github.io/SkyCast/
 
 ## Running locally
 
@@ -62,7 +62,7 @@ Open-Meteo - https://open-meteo.com/
 
 # Contributing
 
-Sure, go ahead. Please, nothing too drastic without discussing with me first. Small bug fixes or UI changes are acceptable. 
+Thank you for your intent to support this project, however I cannot allow pull requests, unless the issue is too drastic and I have been notified beforehand, due to this project being archived within a few days. I don't want you to waste your time on writing a code change just for it to be ignored by me, unintentionally. 
 
 ## License
 

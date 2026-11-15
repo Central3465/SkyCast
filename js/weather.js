@@ -1,5 +1,6 @@
 function displayweather(location, weatherdata) {
     const current = weatherdata.current;
+    updateWeatherTheme(current.weather_code);
     currentWeatherData = weatherdata
     const prob = weatherdata.daily.precipitation_probability_max[0];
     const fallrain = weatherdata.daily.precipitation_sum[0] ?? 0;
@@ -80,4 +81,26 @@ async function refreshweather() {
         refreshbtn.disabled = false;
         refreshbtn.textContent = "↻";
     }
+}
+
+function updateWeatherTheme() {
+    const card = document.querySelector(".wcard");
+    card.classList.remove("theme-sunny", "theme-cloudy", "theme-rainy", "theme-snowy", "theme-stormy", "theme-foggy");
+    let theme;
+    if ([0, 1].includes(code)) {
+        theme = "themme-sunny";
+    } else if ([2, 3].includes(code)) {
+        theme = "themme-cloudy";
+    } else if ([45, 48].includes(code)) {
+        theme = "theme-foggy";
+    } else if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) {
+        theme = "theme-rainy";
+    } else if ([71, 73, 75, 77, 85, 86].includes(code)) {
+        theme = "theme-snowy";
+    } else if ([95, 96, 99].includes(code)) {
+        theme = "theme-stormy";
+    } else {
+        theme = "theme-sunny";
+    }
+    card.classList.add(theme);
 }

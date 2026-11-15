@@ -180,11 +180,43 @@ body {
     display: none;
 }
 
+/* below are linear-gradient which i learnt, it is NOT ai generated */
 .wcard {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    padding: 30px;
+    transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.wcard:hover .wicon {
+    transform: scale(1.08);
+}
+
+.wcard.theme-sunny {
+    background: linear-gradient(145deg, #273653, #493d28);
+    border-color: #a87935;
+}
+
+.wcard.theme-cloudy {
+    background: linear-gradient(145deg, #26354b, #182638);
+    border-color: #52677d;
+}
+
+.wcard.theme-rainy {
+    background: linear-gradient(145deg, #172c46, #101b30);
+    border-color: #316c83;
+}
+
+.wcard.theme-snowy {
+    background: linear-gradient(145deg, #34465c, #1b2b40);
+    border-color: #8da9c4;
+}
+
+.wcard.theme-stormy {
+    background: linear-gradient(145deg, #302541, #171729);
+    border-color: #71808c;
+}
+
+.wcard.theme-foggy {
+    background: linear-gradient(145deg, #35404a, #202b35);
+    border-color: #5c6b7a;
 }
 
 .wtop {
@@ -227,8 +259,7 @@ body {
 }
 
 .wicon {
-    font-size: 56px;
-    line-height: 1;
+    transition: transform 0.5s ease;
 }
 
 .temp {
