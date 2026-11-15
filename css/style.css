@@ -690,3 +690,18 @@ body {
 #clearrecent:hover {
     color: #d9a441;
 }
+
+#sharebtn {
+    background: #272c33;
+    color: #d9a441;
+    border: 1px solid #3d444e;
+    border-radius: 4px;
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+    cursor: pointer
+}
+
+#sharebtn:hover {
+    border-color: #d9a441
+}

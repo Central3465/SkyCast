@@ -16,6 +16,7 @@
 - Autocomplete using Open-Meteo API with a 350ms debounce.
 - Recent searches that is saved to local storage.
 - New dynamic background themes that dynamically change depending on the weather. 😊
+- Users can now share the current weather using the clipboard!
 
 ## How do I access it?
 
