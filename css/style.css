@@ -699,3 +699,41 @@ body {
 .suggestion + .suggestion {
     border-top: 1px solid var(--border);
 }
+
+.recent-section {
+    margin: 25px 0;
+}
+
+.recent-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px
+}
+
+.recent-city {
+    padding: 11px 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--panel);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer
+}
+
+.recent-city:hover {
+    border-color: var(--accent)
+}
+
+#clearrecent {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#clearrecent:hover {
+    color: var(--accent)
+}
