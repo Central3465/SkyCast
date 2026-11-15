@@ -1,19 +1,3 @@
-:root {
-    --bg: #0b1220;
-    --card: #131c31;
-    --panel: #1b2742;
-    --border: #2f4066;
-    --text: #f1f5f9;
-    --muted: #a9b6cf;
-    --accent: #38bdf8;
-    --accent-text: #06223a;
-    --warn: #fbbf24;
-    --error-bg: #7f1d1d;
-    --error-border: #f87171;
-    --disabled-bg: #475569;
-    --disabled-text: #cbd5e1;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -21,9 +5,9 @@
 }
 
 body {
-    font-family: 'Inter', Arial, sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    background-color: #16181c;
+    color: #eceef1;
     min-height: 100vh;
     line-height: 1.4;
 }
@@ -45,17 +29,15 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--accent);
+    color: #d9a441;
     text-decoration: none;
     font-size: 26px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
+    font-weight: 700;
 }
 
 .headlabel {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--muted);
+    font-size: 12px;
+    color: #9da5b0;
 }
 
 .hello {
@@ -63,25 +45,23 @@ body {
 }
 
 .tagline {
-    color: var(--accent);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
+    color: #d9a441;
+    font-size: 12px;
+    font-weight: 600;
     margin-bottom: 13px;
 }
 
 .hello h1 {
-    font-size: 48px;
-    font-weight: 800;
-    letter-spacing: -2px;
-    line-height: 1.1;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.15;
     margin-bottom: 14px;
 }
 
 .subtitle {
-    color: var(--muted);
+    color: #9da5b0;
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
 .search {
@@ -89,25 +69,25 @@ body {
 }
 
 .search form {
-    position: relative
+    position: relative;
 }
 
 .searchbox {
     display: flex;
     align-items: center;
     gap: 12px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
+    background: #1f2328;
+    border: 1px solid #3d444e;
+    border-radius: 6px;
     padding: 8px 9px 8px 17px;
 }
 
 .searchbox:focus-within {
-    border-color: var(--accent);
+    border-color: #d9a441;
 }
 
 .searchicon {
-    color: var(--muted);
+    color: #9da5b0;
     font-size: 20px;
 }
 
@@ -117,29 +97,29 @@ body {
     background: transparent;
     border: none;
     outline: none;
-    color: var(--text);
+    color: #eceef1;
     font-family: inherit;
     font-size: 15px;
 }
 
 .searchbox input::placeholder {
-    color: var(--muted);
+    color: #9da5b0;
 }
 
 .searchbox button {
-    background: var(--accent);
-    color: var(--accent-text);
+    background: #d9a441;
+    color: #1c1606;
     border: none;
-    padding: 13px 22px;
-    border-radius: 9px;
+    padding: 12px 22px;
+    border-radius: 4px;
     font-family: inherit;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
 }
 
 .searchbox button:disabled {
-    background: var(--disabled-bg);
-    color: var(--disabled-text);
+    background: #3d444e;
+    color: #9da5b0;
     cursor: not-allowed;
 }
 
@@ -147,28 +127,35 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    color: var(--text);
+    background: #272c33;
+    border: 1px solid #3d444e;
+    color: #eceef1;
     padding: 18px;
-    border-radius: 12px;
+    border-radius: 6px;
     margin-bottom: 20px;
     font-size: 14px;
 }
 
 .status.error {
-    background: var(--error-bg);
-    border-color: var(--error-border);
-    color: var(--text);
+    background: #5a1e1e;
+    border-color: #c25b5b;
+    color: #eceef1;
 }
 
 .loadingwheel {
     width: 19px;
     height: 19px;
-    border: 3px solid var(--accent);
-    border-top-color: var(--panel);
+    border: 3px solid #d9a441;
+    border-top-color: transparent;
     border-radius: 50%;
     flex-shrink: 0;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .status.error .loadingwheel {
@@ -184,43 +171,41 @@ body {
     display: none;
 }
 
-/* below are linear-gradient which i learnt, it is NOT ai generated */
 .wcard {
-    transition: background 0.5s ease, border-color 0.5s ease;
-}
-
-.wcard:hover .wicon {
-    transform: scale(1.08);
+    background: #1f2328;
+    border: 1px solid #3d444e;
+    border-radius: 8px;
+    padding: 28px 26px;
 }
 
 .wcard.theme-sunny {
-    background: linear-gradient(145deg, #273653, #493d28);
-    border-color: #a87935;
+    background: #2d2a22;
+    border-color: #8a6a32;
 }
 
 .wcard.theme-cloudy {
-    background: linear-gradient(145deg, #26354b, #182638);
-    border-color: #52677d;
+    background: #262b33;
+    border-color: #5d6875;
 }
 
 .wcard.theme-rainy {
-    background: linear-gradient(145deg, #172c46, #101b30);
-    border-color: #316c83;
+    background: #1d2832;
+    border-color: #3b6275;
 }
 
 .wcard.theme-snowy {
-    background: linear-gradient(145deg, #34465c, #1b2b40);
-    border-color: #8da9c4;
+    background: #2c3540;
+    border-color: #8fa3b5;
 }
 
 .wcard.theme-stormy {
-    background: linear-gradient(145deg, #302541, #171729);
-    border-color: #71808c;
+    background: #2a2633;
+    border-color: #675c7d;
 }
 
 .wcard.theme-foggy {
-    background: linear-gradient(145deg, #35404a, #202b35);
-    border-color: #5c6b7a;
+    background: #2b2e31;
+    border-color: #5b646c;
 }
 
 .wtop {
@@ -231,27 +216,26 @@ body {
 }
 
 .title {
-    color: var(--accent);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    color: #d9a441;
+    font-size: 12px;
+    font-weight: 600;
     margin-bottom: 8px;
 }
 
 .wtop h2 {
     font-size: 28px;
+    font-weight: 700;
     margin-bottom: 8px;
 }
 
 .date {
-    color: var(--text);
+    color: #eceef1;
     font-size: 14px;
     margin-bottom: 4px;
 }
 
 .lastupdated {
-    color: var(--muted);
+    color: #9da5b0;
     font-size: 12px;
 }
 
@@ -262,34 +246,28 @@ body {
     gap: 12px;
 }
 
-.wicon {
-    transition: transform 0.5s ease;
-}
-
 .temp {
     display: flex;
     align-items: flex-start;
     margin-top: 25px;
-    color: var(--text);
+    color: #eceef1;
 }
 
 .temp span {
     font-size: 80px;
     font-weight: 700;
-    letter-spacing: -5px;
     line-height: 1;
 }
 
 .temp .unit {
     font-size: 30px;
     margin-top: 12px;
-    color: var(--accent);
-    letter-spacing: 0;
+    color: #d9a441;
 }
 
 .weather-desc,
 .weatherdesc {
-    color: var(--muted);
+    color: #9da5b0;
     font-size: 17px;
     margin-top: 8px;
     text-transform: capitalize;
@@ -297,7 +275,7 @@ body {
 
 .divider {
     height: 1px;
-    background: var(--border);
+    background: #3d444e;
     margin: 30px 0;
 }
 
@@ -311,58 +289,48 @@ body {
     display: flex;
     align-items: center;
     gap: 13px;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    background: #272c33;
+    border: 1px solid #3d444e;
+    border-radius: 6px;
     padding: 14px 16px;
     min-height: 75px;
-    transition: border-color 0.2s ease;
-}
-
-.detail:hover {
-    border-color: var(--accent)
 }
 
 .detail p {
-    color: var(--muted);
+    color: #9da5b0;
     font-size: 12px;
     margin-bottom: 5px;
 }
 
 .detail strong {
-    color: var(--text);
+    color: #eceef1;
     font-size: 16px;
 }
 
-.stinky-feet p {
-    color: var(--muted);
-    text-decoration: none;
-}
-
 #refreshbtn {
-    background: var(--accent);
+    background: #d9a441;
     border: none;
-    color: var(--accent-text);
-    border-radius: 10px;
+    color: #1c1606;
+    border-radius: 4px;
     width: 38px;
     height: 38px;
     font-size: 22px;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
 }
 
 #refreshbtn:disabled {
-    background: var(--disabled-bg);
-    color: var(--disabled-text);
+    background: #3d444e;
+    color: #9da5b0;
 }
 
 .predrain {
     display: flex;
     align-items: center;
     gap: 14px;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    background: #272c33;
+    border: 1px solid #3d444e;
+    border-radius: 6px;
     padding: 16px;
     margin-top: 22px;
 }
@@ -372,19 +340,14 @@ body {
 }
 
 .predrain p {
-    color: var(--muted);
+    color: #9da5b0;
     font-size: 12px;
     margin-bottom: 5px;
 }
 
 .predrain strong {
-    color: var(--text);
+    color: #eceef1;
     font-size: 14px;
-}
-
-.hourly-section,
-.hourlysection {
-    margin-top: 30px;
 }
 
 .forecasthead {
@@ -396,14 +359,19 @@ body {
 
 .forecasthead h3 {
     font-size: 17px;
-    color: var(--text);
+    font-weight: 600;
+    color: #eceef1;
 }
 
 .forecasthead span {
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--accent);
+    font-size: 11px;
+    color: #d9a441;
+}
+
+.hourlysection,
+.dailysection,
+.alerts-section {
+    margin-top: 30px;
 }
 
 .hourlyforecast {
@@ -416,15 +384,15 @@ body {
 .hourly-card {
     flex: 0 0 88px;
     text-align: center;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    background: #272c33;
+    border: 1px solid #3d444e;
+    border-radius: 6px;
     padding: 14px 8px;
 }
 
 .hourly-time {
     font-size: 12px;
-    color: var(--muted);
+    color: #9da5b0;
 }
 
 .hourly-icon {
@@ -435,18 +403,14 @@ body {
 
 .hourly-temp {
     font-size: 17px;
-    font-weight: 700;
-    color: var(--text);
+    font-weight: 600;
+    color: #eceef1;
 }
 
 .hourly-rain {
     font-size: 11px;
     margin-top: 9px;
-    color: var(--accent);
-}
-
-.dailysection {
-    margin-top: 30px;
+    color: #d9a441;
 }
 
 .dailyforecast {
@@ -460,16 +424,16 @@ body {
     grid-template-columns: 1fr auto 1fr 1fr;
     align-items: center;
     gap: 12px;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    background: #272c33;
+    border: 1px solid #3d444e;
+    border-radius: 6px;
     padding: 15px;
-    color: var(--text);
+    color: #eceef1;
 }
 
 .daily-day {
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .daily-weather {
@@ -484,7 +448,7 @@ body {
 
 .daily-desc {
     font-size: 12px;
-    color: var(--muted);
+    color: #9da5b0;
 }
 
 .daily-temp,
@@ -492,18 +456,18 @@ body {
     text-align: right;
     font-size: 14px;
     font-weight: 600;
-    color: var(--text);
+    color: #eceef1;
 }
 
 .daily-rain {
     text-align: right;
     font-size: 12px;
-    color: var(--accent);
+    color: #d9a441;
 }
 
 @media (max-width: 550px) {
     .hello h1 {
-        font-size: 36px;
+        font-size: 34px;
     }
 
     .daily-card {
@@ -525,22 +489,21 @@ body {
     }
 }
 
-.locationbtn{
+.locationbtn {
     margin-top: 12px;
     padding: 12px 17px;
     background: transparent;
-    border: 1px solid white;
-    border-radius: 10px;
-    color: white;
+    border: 1px solid #eceef1;
+    border-radius: 4px;
+    color: #eceef1;
     font-family: inherit;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s;
 }
 
 .locationbtn:hover {
-    background: #ffffff20; /* this is grey color for my future self */
+    background: #2b3038;
 }
 
 .locationbtn:disabled {
@@ -548,9 +511,9 @@ body {
     cursor: wait;
 }
 
-.favourites {
-    margin-top: 25px;
-    margin-bottom: 25px;
+.favourite,
+.recents {
+    margin-top: 30px;
 }
 
 .favourites-list {
@@ -560,26 +523,25 @@ body {
 }
 
 .favourite-city {
-    background: var(--panel);
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    background: #272c33;
+    color: #eceef1;
+    border: 1px solid #3d444e;
+    border-radius: 4px;
     padding: 11px 15px;
     font-family: inherit;
     font-size: 13px;
     cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
 }
 
 .favourite-city:hover {
-    border-color: var(--accent);
+    border-color: #d9a441;
 }
 
 #favouritebtn {
-    background: var(--panel);
-    color: var(--warn);
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    background: #272c33;
+    color: #e9b949;
+    border: 1px solid #3d444e;
+    border-radius: 4px;
     width: 38px;
     height: 38px;
     font-size: 23px;
@@ -587,21 +549,21 @@ body {
 }
 
 #unitbtn {
-    background: var(--panel);
-    color: var(--accent);
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    background: #272c33;
+    color: #d9a441;
+    border: 1px solid #3d444e;
+    border-radius: 4px;
     min-width: 38px;
     height: 38px;
     font-size: 14px;
     padding: 0 8px;
     font-family: inherit;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
 }
 
 #unitbtn:hover {
-    border-color: var(--accent)
+    border-color: #d9a441;
 }
 
 .windcompass {
@@ -610,21 +572,17 @@ body {
     justify-content: center;
     width: 32px;
     height: 32px;
-    border: 1px solid var(--border);
+    border: 1px solid #3d444e;
     border-radius: 50%;
-    color: var(--accent);
+    color: #d9a441;
     font-size: 22px;
     transition: transform 0.4s ease;
-}
-
-.alerts-section {
-    margin-top: 30px;
 }
 
 .alerts {
     display: flex;
     flex-direction: column;
-    gap: 10px
+    gap: 10px;
 }
 
 .weather-alert {
@@ -632,9 +590,9 @@ body {
     align-items: flex-start;
     gap: 13px;
     padding: 15px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    background: var(--panel)
+    border-radius: 6px;
+    border: 1px solid #3d444e;
+    background: #272c33;
 }
 
 .weather-alert > span {
@@ -646,7 +604,7 @@ body {
 }
 
 .weather-alert p {
-    color: var(--muted);
+    color: #9da5b0;
     font-size: 12px;
     margin-top: 5px;
 }
@@ -660,21 +618,20 @@ body {
 }
 
 .no-alerts {
-    color: var(--muted);
-    font-size: 13px
+    color: #9da5b0;
+    font-size: 13px;
 }
 
 .suggestions {
     position: absolute;
-    top: cacl(100% + 8px);
+    top: calc(100% + 8px);
     left: 0;
     right: 0;
     z-index: 10;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    background: #1f2328;
+    border: 1px solid #3d444e;
+    border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 12px 30px #00000040
 }
 
 .suggestion {
@@ -684,7 +641,7 @@ body {
     text-align: left;
     background: transparent;
     border: none;
-    color: var(--text);
+    color: #eceef1;
     font-family: inherit;
     font-size: 14px;
     cursor: pointer;
@@ -692,48 +649,44 @@ body {
 
 .suggestion:hover,
 .suggestion.active {
-    background: var(--panel);
-    color: var(--accent)
+    background: #272c33;
+    color: #d9a441;
 }
 
 .suggestion + .suggestion {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid #3d444e;
 }
 
-.recent-section {
-    margin: 25px 0;
-}
-
-.recent-list {
+.recentlist {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px
+    gap: 10px;
 }
 
 .recent-city {
     padding: 11px 15px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--panel);
-    color: var(--text);
+    border: 1px solid #3d444e;
+    border-radius: 4px;
+    background: #272c33;
+    color: #eceef1;
     font-family: inherit;
     font-size: 13px;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .recent-city:hover {
-    border-color: var(--accent)
+    border-color: #d9a441;
 }
 
 #clearrecent {
     background: transparent;
     border: none;
-    color: var(--muted);
+    color: #9da5b0;
     font-family: inherit;
     font-size: 12px;
     cursor: pointer;
 }
 
 #clearrecent:hover {
-    color: var(--accent)
+    color: #d9a441;
 }

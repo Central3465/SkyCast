@@ -18,7 +18,7 @@ function saveRecentSearch(location) {
     recent.unshift({
         name: location.name,
         admin1: location.admin1 || "",
-        country: location.county || "",
+        country: location.country || "",
         latitude: location.latitude,
         longitude: location.longitude
     })

@@ -20,7 +20,7 @@ function choosesuggestion(location) {
     refreshweather()
 }
 
-function dispaysuggestions(results) {
+function displaysuggestions(results) {
     closesuggestions()
 
     if (!results || results.length === 0) return;
@@ -71,7 +71,7 @@ async function getsuggestions(query) {
 
         if (request !== suggestionrequest) return;
 
-        dispaysuggestions(data.results || [])
+        displaysuggestions(data.results || [])
     } catch (error) {
         if (request === suggestionrequest) {
             console.warn("autocomplete:", error)
@@ -96,7 +96,7 @@ cityinput.addEventListener("input", () => {
     }, 350)
 })
 
-// i fucking hate keyboard navigation fuck accesbility shortcuts
+// i fucking hate keyboard navigation fuck accessibility shortcuts
 cityinput.addEventListener("keydown", event => {
     if (event.key === "Escape") {
         closesuggestions()
@@ -105,12 +105,14 @@ cityinput.addEventListener("keydown", event => {
 
     if (!currentsuggestions.length) return;
 
-    if (event.key === "Arrowdown"){
+    if (event.key === "ArrowDown") {
         event.preventDefault()
         activesuggestionindex = (activesuggestionindex + 1) % currentsuggestions.length
-    } else if (event.key === "ArrowUP") {
+    } else if (event.key === "ArrowUp") {
         event.preventDefault()
-        activesuggestionindex = (activesuggestionindex - 1) % currentsuggestions.length
+        activesuggestionindex = activesuggestionindex <= 0
+            ? currentsuggestions.length - 1
+            : activesuggestionindex - 1
     } else if (event.key === "Enter") {
         event.preventDefault();
 
@@ -124,8 +126,8 @@ cityinput.addEventListener("keydown", event => {
 
     const buttons = suggestionsbox.querySelectorAll(".suggestion");
 
-    buttons.forEach((buttons, index) => {
-        buttons.classList.toggle("active", index === activesuggestionindex)
+    buttons.forEach((button, index) => {
+        button.classList.toggle("active", index === activesuggestionindex)
     })
 })
 
