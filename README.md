@@ -4,6 +4,8 @@
 
 *"polished" is an overstatement, it's really not, there will be the occasional bugs and i will try to fix them*
 
+<img width="1108" height="855" alt="image" src="https://github.com/user-attachments/assets/ae20443d-5884-409b-97ab-18f7f93a97a9" />
+
 ## Features
 
 - Search for a city by name or use your location!
