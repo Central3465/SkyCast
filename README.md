@@ -4,7 +4,17 @@
 
 *"polished" is an overstatement, it's really not, there will be the occasional bugs and i will try to fix them*
 
+**Some Terra reviewers could benefit from reviewing their own reasoning first.**
+
 <img width="1108" height="855" alt="image" src="https://github.com/user-attachments/assets/ae20443d-5884-409b-97ab-18f7f93a97a9" />
+
+## Why I made it? 
+
+The reason I am writing this is because some buffoon was being too tiresome. 
+
+I made this because weather apps these days are too full of detail, they don't get straight to the point. I prefer something that instantly tells me what's the sky like today. 
+
+Respectfully, to whoever decided to return this WHEN THERE'S NOTHING WRONG, do not review this project. May we never cross paths again.
 
 ## Features
 
@@ -34,32 +44,6 @@ python3 -m http.server 8000
 ```
 
 Open http://localhost:8000. VS Code Live Server also works, and is my preferred way.
-
-## Project structure
-
-```text
-SkyCast/
-├── index.html
-├── css/
-│   ├── style.css
-│   └── mobile.css
-├── js/
-│   ├── state.js          # DOM refs, shared state and constants
-│   ├── unit.js           # Celsius/Fahrenheit toggle
-│   ├── weathercodes.js   # WMO weather code lookup
-│   ├── status.js         # Status bar messages
-│   ├── api.js            # Open-Meteo forecast request and caching
-│   ├── search.js         # City search
-│   ├── weather.js        # Refresh and display current weather
-│   ├── win.js            # Wind direction and gusts
-│   ├── alerts.js         # Weather alerts
-│   ├── forecast.js       # Hourly and daily forecast
-│   ├── moremore.js       # Sunset, UV index and daylight
-│   ├── location.js       # "Use my location"
-│   ├── favourites.js     # Favourite cities (localStorage)
-│   └── app.js            # Event wiring and startup
-└── README.md
-```
 
 ## Privacy
 
